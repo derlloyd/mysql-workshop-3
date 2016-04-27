@@ -194,23 +194,15 @@ GROUP BY emails
 
 
 
+List how many phones were landlines, cellular and fax for entries 
+with birthdates between October 1950 and October 1960
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+SELECT Phone.subtype, COUNT(*)
+FROM Phone
+JOIN Entry
+ON Phone.entryId=Entry.id
+WHERE Entry.birthday>"1950-01-01 00:00:00" AND
+Entry.birthday<"1960-10-31 23:59:59"
+GROUP BY Phone.subtype
 

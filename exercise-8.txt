@@ -1,0 +1,18 @@
+mysql> SELECT Phone.subtype, COUNT(*)
+    -> FROM Phone
+    -> JOIN Entry
+    -> ON Phone.entryId=Entry.id
+    -> WHERE Entry.birthday>"1950-01-01 00:00:00" AND
+    -> Entry.birthday<"1960-10-31 23:59:59"
+    -> GROUP BY Phone.subtype
+    -> 
+    -> ;
++----------+----------+
+| subtype  | COUNT(*) |
++----------+----------+
+| landline |      182 |
+| cellular |      147 |
+| fax      |      146 |
++----------+----------+
+3 rows in set (0.01 sec)
+
