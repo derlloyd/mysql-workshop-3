@@ -1,0 +1,20 @@
+List all of the countries with respective occurence totals in DESC order
+Country names should all appear lowercase
+
+
+mysql> SELECT lower(country) AS "Country List" FROM Address
+    ->     GROUP BY country
+    ->     ORDER BY country DESC;
++----------------------------------------------+
+| Country List                                 |
++----------------------------------------------+
+| åland islands                                |
+| zimbabwe                                     |
+| zambia                                       |
+| yemen                                        |
+| western sahara                               |
+| wallis and futuna                            |
+
+
+...
+

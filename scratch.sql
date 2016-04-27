@@ -105,3 +105,12 @@ ALTER TABLE Address DROP FOREIGN KEY Address_ibfk_1;
 ALTER TABLE ElectronicMail DROP FOREIGN KEY ElectronicMail_ibfk_1;
 
 
+
+SELECT lower(country) AS "Country List" FROM Address
+    GROUP BY country
+    ORDER BY country DESC;
+
+
+
+
+
