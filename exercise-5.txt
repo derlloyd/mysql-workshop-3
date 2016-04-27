@@ -1,0 +1,28 @@
+List all of the emails associated to AddressBook.id = 100
+
+mysql> SELECT ElectronicMail.id, ElectronicMail.content
+    -> FROM ElectronicMail
+    -> INNER JOIN Entry
+    -> ON ElectronicMail.entryId=Entry.id
+    -> INNER JOIN AddressBook
+    -> ON Entry.addressBookId=AddressBook.id
+    -> WHERE Entry.addressBookId = 100;
++-------+--------------------------------------------+
+| id    | content                                    |
++-------+--------------------------------------------+
+| 20324 | Nam.tempor@nisimagna.co.uk                 |
+| 19494 | vitae.diam@sapienAeneanmassa.com           |
+| 19729 | cursus.vestibulum@pellentesqueSeddictum.ca |
+| 19056 | velit@vestibulum.co.uk                     |
+| 19344 | tincidunt.congue.turpis@Inmi.net           |
+| 19894 | nibh.Donec.est@nibh.org                    |
+| 18648 | malesuada.fames.ac@Sedeu.co.uk             |
+| 18601 | tortor.dictum@Nulla.org                    |
+| 20063 | mauris.blandit.mattis@Integersemelit.net   |
+| 19555 | Nunc.ac@parturientmontesnascetur.com       |
+| 20223 | vulputate.posuere.vulputate@liberoDonec.ca |
+| 19916 | massa.Quisque.porttitor@enimSednulla.edu   |
+| 20120 | eget@viverraMaecenasiaculis.net            |
+| 19913 | eu.tellus@ipsum.co.uk                      |
++-------+--------------------------------------------+
+14 rows in set (0.00 sec)

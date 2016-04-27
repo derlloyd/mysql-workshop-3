@@ -130,15 +130,45 @@ SELECT CONCAT(
     ORDER BY firstName;
 
 
+List all of the emails associated to AddressBook.id = 100
+
+SELECT entryId, content from ElectronicMail
+    WHERE entryId = (
+    SELECT id FROM Entry
+    WHERE addressBookId=100
+    );
 
 
+SELECT * FROM users u JOIN posts p ON u.id = p.userId;
+
+SELECT * FROM ElectronicMail entryId JOIN Entry id 
+ON ElectronicMail.entryId = Entry.id;
+
+SELECT ElectronicMail.id, ElectronicMail.content, ElectronicMail.entryId, Entry.id
+FROM ElectronicMail
+INNER JOIN Entry
+ON ElectronicMail.entryId=Entry.id;
 
 
+SELECT ElectronicMail.id, ElectronicMail.content, 
+ElectronicMail.entryId, Entry.id, Entry.addressBookId,
+AddressBook.id
+FROM ElectronicMail
+INNER JOIN Entry
+ON ElectronicMail.entryId=Entry.id
+INNER JOIN AddressBook
+ON Entry.addressBookId=AddressBook.id
+WHERE Entry.addressBookId = 100;
+;
 
 
-
-
-
+SELECT ElectronicMail.id, ElectronicMail.content
+FROM ElectronicMail
+INNER JOIN Entry
+ON ElectronicMail.entryId=Entry.id
+INNER JOIN AddressBook
+ON Entry.addressBookId=AddressBook.id
+WHERE Entry.addressBookId = 100;
 
 
 
