@@ -111,6 +111,44 @@ SELECT lower(country) AS "Country List" FROM Address
     ORDER BY country DESC;
 
 
+List all of the first names for AddressBook.name="Pharetra Ut Limited"
+The first and last letters should be capitalized
+
+
+SELECT CONCAT(
+    LEFT(UPPER(firstName),1), 
+    SUBSTRING(LOWER(firstName),2,(LENGTH(firstName)-2)), 
+    
+    RIGHT(UPPER(firstName),1)
+    )
+    AS "Pharetra Ut Limited People"FROM Entry
+    WHERE addressBookId = (
+    
+    SELECT id FROM AddressBook
+    WHERE name="Pharetra Ut Limited"
+    )
+    ORDER BY firstName;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
