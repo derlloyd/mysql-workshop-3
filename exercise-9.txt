@@ -1,0 +1,30 @@
+mysql> SELECT Account.email
+    -> FROM Account
+    -> JOIN AddressBook
+    -> ON Account.id=AddressBook.accountID
+    -> JOIN Entry
+    -> ON AddressBook.id=Entry.addressBookId
+    -> JOIN Phone
+    -> ON Entry.id=Phone.entryId
+    -> WHERE Phone.content LIKE "%(___)%"
+    -> GROUP BY Account.email;
++-------------------------------------------------------+
+| email                                                 |
++-------------------------------------------------------+
+| adipiscing.fringilla.porttitor@Quisqueac.edu          |
+| adipiscing@Sedetlibero.ca                             |
+| ante@nulla.edu                                        |
+| aptent@nequesedsem.edu                                |
+| bibendum@orciUtsemper.com                             |
+| blandit@nec.com                                       |
+| commodo@tincidunt.co.uk                               |
+
+...
+
+| ut@Integersemelit.org                                 |
+| Vestibulum.ante.ipsum@egestasblanditNam.net           |
+| vitae@tinciduntpede.com                               |
+| Vivamus.euismod.urna@anteNunc.net                     |
+| Vivamus.molestie@Infaucibus.org                       |
++-------------------------------------------------------+
+66 rows in set (0.02 sec)

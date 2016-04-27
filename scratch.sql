@@ -206,3 +206,31 @@ WHERE Entry.birthday>"1950-01-01 00:00:00" AND
 Entry.birthday<"1960-10-31 23:59:59"
 GROUP BY Phone.subtype
 
+
+
+List all Account emails with AddressBook containing Phone numbers with a country code
+
+SELECT Account.email, Phone.content
+FROM Account
+JOIN AddressBook
+ON Account.id=AddressBook.accountID
+JOIN Entry
+ON AddressBook.id=Entry.addressBookId
+JOIN Phone
+ON Entry.id=Phone.entryId
+WHERE Phone.content LIKE "%(___)%"
+
+
+SELECT Account.email
+FROM Account
+JOIN AddressBook
+ON Account.id=AddressBook.accountID
+JOIN Entry
+ON AddressBook.id=Entry.addressBookId
+JOIN Phone
+ON Entry.id=Phone.entryId
+WHERE Phone.content LIKE "%(___)%"
+GROUP BY Account.email
+
+
+
