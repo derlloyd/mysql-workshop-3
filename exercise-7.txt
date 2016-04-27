@@ -1,0 +1,12 @@
+
+List all possible domain name values for ElectronicMail 
+(email@domain.name)
+
+
+SELECT
+SUBSTRING(content,
+locate("@", content),
+length(content))
+AS emails
+FROM ElectronicMail
+GROUP BY emails

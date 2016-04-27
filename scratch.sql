@@ -157,6 +157,58 @@ Entry.lastName="Jenkins"
 SELECT * FROM users u JOIN posts p ON u.id = p.userId;
 
 
+List all possible domain name values for ElectronicMail 
+(email@domain.name)
+
+SELECT content
+FROM ElectronicMail
+GROUP BY content
+
+
+
+SELECT content, locate("@", content),
+SUBSTRING(content,
+locate("@", content),
+length(content))
+FROM ElectronicMail
+GROUP BY content
+
+SELECT content,
+SUBSTRING(content,
+locate("@", content),
+length(content))
+AS emails
+FROM ElectronicMail
+GROUP BY emails
+
+
+
+SELECT
+SUBSTRING(content,
+locate("@", content),
+length(content))
+AS emails
+FROM ElectronicMail
+GROUP BY emails
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
