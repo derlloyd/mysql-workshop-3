@@ -132,49 +132,29 @@ SELECT CONCAT(
 
 List all of the emails associated to AddressBook.id = 100
 
-SELECT entryId, content from ElectronicMail
-    WHERE entryId = (
-    SELECT id FROM Entry
-    WHERE addressBookId=100
-    );
-
-
-SELECT * FROM users u JOIN posts p ON u.id = p.userId;
-
-SELECT * FROM ElectronicMail entryId JOIN Entry id 
-ON ElectronicMail.entryId = Entry.id;
-
-SELECT ElectronicMail.id, ElectronicMail.content, ElectronicMail.entryId, Entry.id
-FROM ElectronicMail
-INNER JOIN Entry
-ON ElectronicMail.entryId=Entry.id;
-
-
-SELECT ElectronicMail.id, ElectronicMail.content, 
-ElectronicMail.entryId, Entry.id, Entry.addressBookId,
-AddressBook.id
-FROM ElectronicMail
-INNER JOIN Entry
-ON ElectronicMail.entryId=Entry.id
-INNER JOIN AddressBook
-ON Entry.addressBookId=AddressBook.id
-WHERE Entry.addressBookId = 100;
-;
-
 
 SELECT ElectronicMail.id, ElectronicMail.content
 FROM ElectronicMail
-INNER JOIN Entry
+JOIN Entry
 ON ElectronicMail.entryId=Entry.id
-INNER JOIN AddressBook
+JOIN AddressBook
 ON Entry.addressBookId=AddressBook.id
 WHERE Entry.addressBookId = 100;
 
 
+List all of the phone numbers for Jenkins, Charlotte
+
+SELECT Phone.type, Phone.subtype, Phone.content, 
+Entry.firstName, Entry.lastName
+FROM Phone
+JOIN Entry
+ON Phone.entryId=Entry.id
+WHERE Entry.firstName="Charlotte" 
+AND
+Entry.lastName="Jenkins"
 
 
-
-
+SELECT * FROM users u JOIN posts p ON u.id = p.userId;
 
 
 

@@ -1,0 +1,18 @@
+List all of the phone numbers for Jenkins, Charlotte
+
+mysql> SELECT Phone.type, Phone.subtype, Phone.content, 
+    -> Entry.firstName, Entry.lastName
+    -> FROM Phone
+    -> JOIN Entry
+    -> ON Phone.entryId=Entry.id
+    -> WHERE Entry.firstName="Charlotte" 
+    -> AND
+    -> Entry.lastName="Jenkins"
+    -> ;
++-------+----------+----------------+-----------+----------+
+| type  | subtype  | content        | firstName | lastName |
++-------+----------+----------------+-----------+----------+
+| other | fax      | (110) 167-3420 | Charlotte | Jenkins  |
+| home  | landline | (605) 175-1334 | Charlotte | Jenkins  |
++-------+----------+----------------+-----------+----------+
+2 rows in set (0.00 sec)
