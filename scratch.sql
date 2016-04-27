@@ -89,3 +89,19 @@ ALTER TABLE Address ADD FOREIGN KEY (entryId)
 ALTER TABLE ElectronicMail ADD FOREIGN KEY (entryId)
     REFERENCES Entry(id)
     ON DELETE CASCADE;
+    
+    
+    
+ALTER TABLE Entry DROP COLUMN createdOn;
+ALTER TABLE Entry DROP COLUMN modifiedOn;
+
+
+
+
+ALTER TABLE AddressBook DROP FOREIGN KEY AddressBook_ibfk_1;
+ALTER TABLE Entry DROP FOREIGN KEY Entry_ibfk_1;
+ALTER TABLE Phone DROP FOREIGN KEY Phone_ibfk_1;
+ALTER TABLE Address DROP FOREIGN KEY Address_ibfk_1;
+ALTER TABLE ElectronicMail DROP FOREIGN KEY ElectronicMail_ibfk_1;
+
+

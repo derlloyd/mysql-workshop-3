@@ -81,6 +81,16 @@ ALTER TABLE Entry ADD FOREIGN KEY (addressBookId)
     ON DELETE CASCADE;
     
 
+ALTER TABLE Phone ADD FOREIGN KEY (entryId)
+    REFERENCES Entry(id)
+    ON DELETE CASCADE;
+
+
+ALTER TABLE Address ADD FOREIGN KEY (entryId)
+    REFERENCES Entry(id)
+    ON DELETE CASCADE;
+    
+    
 ALTER TABLE ElectronicMail ADD FOREIGN KEY (entryId)
     REFERENCES Entry(id)
     ON DELETE CASCADE;

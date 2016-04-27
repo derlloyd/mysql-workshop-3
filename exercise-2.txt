@@ -1,0 +1,83 @@
+
+mysql> source /home/ubuntu/workspace/data/import-account.sql;
+mysql> source /home/ubuntu/workspace/data/import-addressbook.sql;
+mysql> source /home/ubuntu/workspace/data/import-entry.sql;
+
+// got some error messages, reran the command and imported too much data
+// used delete from table command to delete all entries
+// but then reimport had wrong auto-increment numbers, 
+// mistake should have used truncate
+// but in order to truncate, have to delete foreign keys
+// using contraint name
+
+SHOW CREATE TABLE do get contraint name
+
+ALTER TABLE AddressBook DROP FOREIGN KEY AddressBook_ibfk_1;
+ALTER TABLE Entry DROP FOREIGN KEY Entry_ibfk_1;
+ALTER TABLE Phone DROP FOREIGN KEY Phone_ibfk_1;
+ALTER TABLE Address DROP FOREIGN KEY Address_ibfk_1;
+ALTER TABLE ElectronicMail DROP FOREIGN KEY ElectronicMail_ibfk_1;
+
+// then truncated all
+
+// then recreated foreign keys
+
+ALTER TABLE AddressBook ADD FOREIGN KEY (accountId)
+    REFERENCES Account(id)
+    ON DELETE CASCADE;
+
+
+ALTER TABLE Entry ADD FOREIGN KEY (addressBookId)
+    REFERENCES AddressBook(id)
+    ON DELETE CASCADE;
+
+
+ALTER TABLE Phone ADD FOREIGN KEY (entryId)
+    REFERENCES Entry(id)
+    ON DELETE CASCADE;
+
+
+ALTER TABLE Address ADD FOREIGN KEY (entryId)
+    REFERENCES Entry(id)
+    ON DELETE CASCADE;
+    
+    
+ALTER TABLE ElectronicMail ADD FOREIGN KEY (entryId)
+    REFERENCES Entry(id)
+    ON DELETE CASCADE;
+
+
+// then re-imported data
+
+
+mysql> source /home/ubuntu/workspace/data/import-account.sql;
+mysql> source /home/ubuntu/workspace/data/import-addressbook.sql;
+mysql> source /home/ubuntu/workspace/data/import-entry.sql;
+
+
+
+mysql> select count(*) FROM Account;
++----------+
+| count(*) |
++----------+
+|     1000 |
++----------+
+1 row in set (0.00 sec)
+
+
+mysql> select count(*) FROM AddressBook;
++----------+
+| count(*) |
++----------+
+|     1100 |
++----------+
+1 row in set (0.00 sec)
+
+
+mysql> SELECT count(*) FROM Entry;
++----------+
+| count(*) |
++----------+
+|     6100 |
++----------+
+1 row in set (0.00 sec)
